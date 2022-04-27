@@ -1,15 +1,18 @@
 package com.example.palindrome.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 import java.time.LocalDateTime;
 
 @Entity
-@Table
+@Setter
+@Getter
 public class PalindromeData {
 
   @Id
@@ -17,13 +20,13 @@ public class PalindromeData {
   @Column(name = "id")
   private Long id;
 
-  @Column(name = "content")
+  @Column(name = "content", nullable = false)
   private String content;
 
-  @Column(name = "timestamp")
+  @Column(name = "timestamp", nullable = false)
   private LocalDateTime timestamp;
 
-  @Column(name = "longest_palindrome_size")
+  @Column(name = "longest_palindrome_size", nullable = false)
   private int longestPalindromeSize;
 
 }
