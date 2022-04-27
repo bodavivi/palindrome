@@ -27,6 +27,6 @@ public class PalindromeData {
   private LocalDateTime timestamp;
 
   @Column(name = "longest_palindrome_size", nullable = false)
-  private int longestPalindromeSize;
+  private Integer longestPalindromeSize;
 
 }
