@@ -52,12 +52,24 @@ public class PalindromeDataServiceImplUnitTest {
     data1.setLongestPalindromeSize(2);
     data1.setContent("illat");
     data1.setId(1L);
+    PalindromeDataDto dataDto1 = new PalindromeDataDto();
+    dataDto1.setTimestamp(data1.getTimestamp());
+    dataDto1.setLongestPalindromeSize(2);
+    dataDto1.setContent("illat");
+    dataDto1.setId(1L);
     PalindromeData data2 = new PalindromeData();
     data2.setTimestamp(LocalDateTime.now().plusDays(1L));
     data2.setLongestPalindromeSize(3);
     data2.setContent("kék");
     data2.setId(2L);
+    PalindromeDataDto dataDto2 = new PalindromeDataDto();
+    dataDto2.setTimestamp(data2.getTimestamp());
+    dataDto2.setLongestPalindromeSize(3);
+    dataDto2.setContent("kék");
+    dataDto2.setId(2L);
     Mockito.when(palindromeDataRepository.findAll()).thenReturn(List.of(data1, data2));
+    Mockito.when(mapper.map(data1, PalindromeDataDto.class)).thenReturn(dataDto1);
+    Mockito.when(mapper.map(data2, PalindromeDataDto.class)).thenReturn(dataDto2);
 
     List<PalindromeDataDto> result = palindromeDataService.getAll();
     Assert.assertEquals(2, result.size());

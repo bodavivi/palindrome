@@ -60,6 +60,16 @@ public class PalindromeServiceImplUnitTest {
   }
 
   @Test
+  public void processCalculation_should_throw_exception_if_content_contains_not_just_alphabetical_character() {
+    requestDto.setContent("h3ll0");
+
+    expectedException.expect(ResponseStatusException.class);
+    expectedException.expectMessage("Only alphabetical characters are allowed.");
+
+    palindromeService.processCalculation(requestDto);
+  }
+
+  @Test
   public void processCalculation_should_return_with_max_palindrome_size() {
     Mockito.when(palindromeCalculationService.calculateLongestPalindromeSize(requestDto.getContent())).thenReturn(3);
 

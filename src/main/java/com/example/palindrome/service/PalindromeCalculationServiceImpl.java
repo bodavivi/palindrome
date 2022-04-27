@@ -17,7 +17,7 @@ public class PalindromeCalculationServiceImpl implements PalindromeCalculationSe
     int maximumPalindromeLength = 1;
     for (int i = 0; i < content.length() - 1; i++) {
       for (int j = i + 2; j <= content.length(); j++) {
-        String contentFragment = content.substring(i, j);
+        String contentFragment = content.substring(i, j).toLowerCase();
         String reverseContentFragment = new StringBuilder(contentFragment).reverse().toString();
         if (contentFragment.equals(reverseContentFragment) && contentFragment.length() > maximumPalindromeLength)
           maximumPalindromeLength = contentFragment.length();

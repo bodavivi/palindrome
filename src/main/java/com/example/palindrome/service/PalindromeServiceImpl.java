@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.regex.Pattern;
+
 @Service
 public class PalindromeServiceImpl implements PalindromeService {
 
@@ -31,5 +33,11 @@ public class PalindromeServiceImpl implements PalindromeService {
       throw new ResponseStatusException(HttpStatus.PRECONDITION_FAILED,
           "The 'content' and the 'timestamp' fields are required");
     }
+
+    Pattern allowedCharacters = Pattern.compile("[A-záéíóöőúüűÁÉÍÓÖŐÚÜŰ]*");
+    if (!allowedCharacters.matcher(palindromeCalculationRequestDto.getContent()).matches()) {
+      throw new ResponseStatusException(HttpStatus.PRECONDITION_FAILED, "Only alphabetical characters are allowed.");
+    }
+
   }
 }

@@ -29,4 +29,10 @@ public class PalindromeCalculationServiceImplUnitTest {
     int result = palindromeCalculationService.calculateLongestPalindromeSize("abrakadabra");
     Assert.assertEquals(3, result);
   }
+
+  @Test
+  public void calculateLongestPalindromeSize_should_return_the_right_number_of_palindromes_size_if_the_palindrome_is_not_symmetrical_by_lower_and_camel_case() {
+    int result = palindromeCalculationService.calculateLongestPalindromeSize("cIsion");
+    Assert.assertEquals(3, result);
+  }
 }
